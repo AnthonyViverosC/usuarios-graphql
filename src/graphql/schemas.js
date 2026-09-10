@@ -12,6 +12,21 @@ const schema = buildSchema(`
     email: String!
   }
 
+  type Product {
+    id: ID!
+    name: String!
+    description: String
+    price: Float!
+    stock: Int!
+  }
+
+  input ProductInput {
+    name: String!
+    description: String
+    price: Float!
+    stock: Int!
+  }
+
   type DeleteResult {
     success: Boolean!
     message: String!
@@ -20,12 +35,17 @@ const schema = buildSchema(`
   type Query {
     users: [User!]!
     user(id: ID!): User
+    products: [Product!]!
+    product(id: ID!): Product
   }
 
   type Mutation {
     createUser(input: UserInput!): User!
     updateUser(id: ID!, input: UserInput!): User!
     deleteUser(id: ID!): DeleteResult!
+    createProduct(input: ProductInput!): Product!
+    updateProduct(id: ID!, input: ProductInput!): Product!
+    deleteProduct(id: ID!): DeleteResult!
   }
 `);
 
