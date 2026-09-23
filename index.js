@@ -1,11 +1,11 @@
 const path = require("path");
-require("dotenv").config({ path: path.join(__dirname, ".env") });
+require("dotenv").config({ path: path.join(__dirname, "src", ".env") });
 const express = require("express");
 const cors = require("cors");
 const { createHandler } = require("graphql-http/lib/use/express");
-const schema = require("./graphql/schemas");
-const rootValue = require("./graphql/resolvers");
-const pool = require("./config/db");
+const schema = require("./src/graphql/schemas");
+const rootValue = require("./src/graphql/resolvers");
+const pool = require("./src/config/db");
 
 const app = express();
 const port = Number(process.env.PORT || 4000);
